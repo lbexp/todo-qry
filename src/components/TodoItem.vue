@@ -1,22 +1,23 @@
 <script setup lang="ts">
-import { ref } from 'vue'
 import type { TodoItem } from '@/entities/todo'
+import useEditTodo from '@/usecases/todo/use-edit-todo'
 
 const props = defineProps<TodoItem>()
-const checked = ref(props.checked)
+
+const { checked, text } = useEditTodo(props)
 </script>
 
 <template>
   <div :class="$style.wrapper">
     <input type="checkbox" v-model="checked" />
-    <p>{{ text }}</p>
+    <input v-model="text" />
   </div>
 </template>
 
 <style module>
 .wrapper {
   display: flex;
-  flex-direction: column;
   align-items: center;
+  gap: 8px;
 }
 </style>

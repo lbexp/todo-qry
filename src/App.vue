@@ -1,28 +1,19 @@
 <script setup lang="ts">
+import useTodoList from '@/usecases/todo/use-todo-list'
+import useCreateTodo from '@/usecases/todo/use-create-todo'
+
 import HeaderNav from '@/components/HeaderNav.vue'
-import TodoList from './components/TodoList.vue'
+import TodoList from '@/components/TodoList.vue'
+
+const { data } = useTodoList()
+const { onAdd } = useCreateTodo()
 </script>
 
 <template>
   <div :class="$style.wrapper">
     <HeaderNav />
     <div>
-      <TodoList
-        :items="[
-          {
-            checked: true,
-            text: 'Ini coyy'
-          },
-          {
-            checked: false,
-            text: 'Ini coy'
-          },
-          {
-            checked: true,
-            text: 'Ini coyy'
-          }
-        ]"
-      />
+      <TodoList :items="data || []" />
     </div>
   </div>
 </template>

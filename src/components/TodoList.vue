@@ -1,13 +1,10 @@
 <script setup lang="ts">
 import TodoItemComp from './TodoItem.vue'
 import type { TodoItem } from '@/entities/todo'
-import { API_URL } from '@/constants'
 
 defineProps<{
   items: TodoItem[]
 }>()
-
-console.log(API_URL)
 </script>
 
 <template>
@@ -15,6 +12,7 @@ console.log(API_URL)
     <TodoItemComp
       v-for="(item, index) in items"
       :key="index"
+      :id="item.id"
       :checked="item.checked"
       :text="item.text"
     />
