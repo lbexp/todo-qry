@@ -1,18 +1,18 @@
 <script setup lang="ts">
 import useTodoList from '@/usecases/todo/use-todo-list'
-import useCreateTodo from '@/usecases/todo/use-create-todo'
 
 import HeaderNav from '@/components/HeaderNav.vue'
 import TodoList from '@/components/TodoList.vue'
+import TodoForm from './components/TodoForm.vue'
 
 const { data } = useTodoList()
-const { onAdd } = useCreateTodo()
 </script>
 
 <template>
   <div :class="$style.wrapper">
     <HeaderNav />
-    <div>
+    <div :class="$style['content-wrapper']">
+      <TodoForm />
       <TodoList :items="data || []" />
     </div>
   </div>
@@ -24,5 +24,11 @@ const { onAdd } = useCreateTodo()
   flex-direction: column;
   align-items: center;
   gap: 36px;
+}
+
+.content-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
 </style>

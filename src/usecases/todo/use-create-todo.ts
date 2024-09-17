@@ -18,10 +18,12 @@ export default function useCreateTodo() {
       return false
     }
 
+    text.value = ''
     return true
   }
 
   return {
+    text,
     loading,
     onAdd: addTodo
   }
