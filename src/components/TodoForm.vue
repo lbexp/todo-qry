@@ -15,6 +15,6 @@ const { text, onAdd } = useCreateTodo()
 .wrapper {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 8px;
 }
 </style>
